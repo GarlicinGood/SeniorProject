@@ -22,11 +22,8 @@ export default class testCommand implements IBotCommand {
         
         let guild = messageObject.guild;
         let currentUser = client.user;
-        
-        console.log(currentUser);
-        console.log(messageObject.author);
 
-        var name = `new-channel${guid}`;
+        var name = `support-ticket-${guid}`;
         guild.createChannel(name, 'text', [
             {
                 id: messageObject.author.id,
@@ -34,28 +31,9 @@ export default class testCommand implements IBotCommand {
             },
         ]);
 
-
-        var newChannel = guild.channels.find("name", name);
-        var parentChannel = guild.channels.find("id", "627608447046778890");
-        
-        newChannel.setParent(parentChannel);
-
-        // if (parentChannel != null) {
-        //     // newChannel.parentID = parentChannel.id;
-        // }
-
-        let helpChannel = parentChannel.id = "627608447046778890";
-        newChannel.setParent(`${helpChannel}`)
-        
-        
-        //Adds author of command to channel
-        // messageObject.author;
-
-
-        //Adds admins to text channel
-        
-        // console.log("testing the support ticket command");
-        // console.log(args);
+        //make sure everyone can't see this channel
+        //add person who made this channel
+        //rick roll user who made this channel
         
     }
 
