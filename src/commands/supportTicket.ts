@@ -19,15 +19,12 @@ export default class testCommand implements IBotCommand {
         let guild = messageObject.guild;
         let currentUser = client.user;
 
-        // let botLogs = Discord.Channel.name === "bot-logs"
-        // const results = messageObject.channel.fetchMessage(`${botLogs}`)
-
-        // var logsChannel:Discord.TextChannel = guild.channels.find();
-
+       
 
         //GuildChannel
         var logsChannel = guild.channels.find(channel => channel.id == "bot-logs");
         var whatever = messageObject.channel;
+        var admin = messageObject.member.hasPermission('ADMINISTRATOR')
 
         whatever.fetchMessage("672635523419865098")
             .then(message => {
@@ -40,12 +37,28 @@ export default class testCommand implements IBotCommand {
                     {
                         type: 'text',
                         permissionOverwrites: [
-                            { id: messageObject.author.id, allow: ['VIEW_CHANNEL', 'SEND_MESSAGES'] }
-                            // ,{ id: .author.id, deny: ['VIEW_CHANNEL']}
+                            { id: messageObject.author.id,
+                             allow: ['VIEW_CHANNEL', 'SEND_MESSAGES'] },
+
+                            {id: message.guild.id,
+                             deny: ['VIEW_CHANNEL', 'READ_MESSAGES']},
+                            
+                                
+                            
+                            
+
+                             
+
                         ],
                         parent: '642183412907507721'
+
+                        
+
                     }
+                    
+                    
                 )
+                
 
                 id = id + 1;
                 message.edit((id).toString())
@@ -56,13 +69,14 @@ export default class testCommand implements IBotCommand {
             
 
 
-        // let logChannel = Discord.Channel.name === "bot-logs"
-        // messageObject.channel.(`${logChannel}`)
-        //     .then(console.log)
-        //     .catch(console.error);
+       
 
-        // TODO - Hide channel from everyone else, 
+        // DONE - 
+        //Hide channel from everyone else, 
         // parent into support catergory, 
+        
+        
+        //TODO --
         //assure admins are allowed into text channel, 
         //upload the number to an online database
 
